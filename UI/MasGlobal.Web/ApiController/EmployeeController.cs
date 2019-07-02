@@ -51,17 +51,20 @@ namespace MasGlobal.Web.ApiController
         /// <returns>Employee List JSON</returns>
         [HttpGet]
         [Route("All")]
-        public async Task<ActionResult<string>> GetEmployees(int id)
+        public async Task<ActionResult<string>> GetEmployees()
         {
             var result = "Employee not found";
-            var employee = await _repository.GetById(id);
-            if (employee != null)
+            var employees = await _repository.List();
+            List<EmployeeDTO> employeesDTO = new List<EmployeeDTO>();
+            foreach (var employee in employees)
             {
                 var emp = new EmployeeDTO();
                 emp.FromEmployee(employee);
-
-                result = JsonConvert.SerializeObject(emp);
+                employeesDTO.Add(emp);
             }
+
+            result = JsonConvert.SerializeObject(employeesDTO);
+
             return result;
         }
 
