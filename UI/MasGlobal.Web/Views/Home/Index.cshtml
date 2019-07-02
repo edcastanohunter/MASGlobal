@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<h1 class="tlt" class="">
+    <ul class="texts">
+        <li data-out-effect="fadeOut" data-out-shuffle="true">Hola!! MAS Global </li>
+        <li data-out-effect="fadeOut" data-out-shuffle="true"> Soy Edwin Castaño, un amante del software.</li>
+        <li data-in-effect="fadeIn">Muchas gracias por hacerme parte de este proceso.</li>
+        <li data-in-effect="fadeIn">Espero que, lo que he hecho, sea de su agrado.</li>
+    </ul>
+</h1>
+<h2 id="start" style="display:none; color:coral; text-align:center"> 
+    Para iniciar el test, presiona en la barra de arriba la opción <a asp-area="" asp-controller="Employee" asp-action="Index">Empleados</a>
+</h2>
+
+<script>    
+    $(document).ready(function () {
+        $('.tlt').textillate({
+            selector: '.texts',
+            loop: false,
+            minDisplayTime: 2000,
+            initialDelay: 0,
+            autoStart: true,
+            callback: function () { $("#start").fadeIn(); },
+        });
+    });
+</script>

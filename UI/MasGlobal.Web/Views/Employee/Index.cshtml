@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MasGlobal.Web.DTO.EmployeeDTO>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Empleados Info</h2>
+
+@using (Html.BeginForm("GetEmployee", "Employee", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+    <div class="formContainer">
+        @Html.TextBox("Buscar")
+        <input type="submit" value="Buscar" />
+    </div>
+}
+
+<div class="viewContent">
+    <table class="table table-striped">
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="10">No Record's found.</td>
+            </tr>
+        }
+        else
+        {
+            <thead>
+                <tr class="info">
+                    <th data-defaultsign="_19">Id</th>
+                    <th data-defaultsign="AZ"> Nombre </th>
+                    <th data-defaultsign="AZ">Rol </th>
+                    <th data-defaultsign="month"> Descripción del rol</th>
+                    <th data-firstsort="desc">Tipo Contrato </th>
+                    <th data-defaultsign="_19"> Salary </th>
+                    <th data-defaultsign="_19"> Annual Salary </th>
+                </tr>
+            </thead>
+            foreach (var item in Model)
+            {
+            <tr>
+                <td> @item.Id </td>
+                <td> @item.Name </td>
+                <td> @item.RoleName </td>
+                <td> @item.RoleDescription </td>
+                <td> @item.ContractType </td>
+                <td> @String.Format("{0:C}", @item.Salary)</td>
+                <td> @String.Format("{0:C}", @item.AnnualSalary) </td>
+            </tr>
+            }
+        }
+    </table>
+
+
+</div>

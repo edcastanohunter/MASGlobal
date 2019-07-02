@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MasGlobal.Web</name>
+    </assembly>
+    <members>
+        <member name="M:MasGlobal.Web.ApiController.EmployeeController.GetByID(System.Int32)">
+            <summary>
+            Devuelve el empleado por su Id.
+            </summary>
+            <param name="id">El id del empleado</param>
+            <returns>Employee JSON</returns>
+        </member>
+        <member name="M:MasGlobal.Web.ApiController.EmployeeController.GetEmployees(System.Int32)">
+            <summary>
+            Devuelve todos loe empleados existentes
+            </summary>
+            
+            <returns>Employee List JSON</returns>
+        </member>
+    </members>
+</doc>
